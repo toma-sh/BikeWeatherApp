@@ -1,0 +1,146 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.city-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.city-selection select:hover {
+    border-color: #4CAF50;
+}
+
+#forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.forecast-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.forecast-header {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.forecast-details {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.bike-score {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    border: 10px solid #e0e0e0; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4CAF50; /* Default color */
+    margin-top: 10px;
+    transition: border-color 0.5s ease;
+    box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bike-score span {
+    position: absolute;
+    font-size: 18px;
+}
+
+.bike-score .score-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    border-top-color: #4CAF50; /* Color of the progress */
+    clip-path: circle(50% at 50% 50%);
+    transform: rotate(-45deg);
+    transition: transform 1s ease;
+}
+
+/* Calculate stroke-dasharray for each score percentage */
+.bike-score .score-ring {
+    stroke-dasharray: 251.2; /* Circumference of the circle (2 * Math.PI * 40) */
+    stroke-dashoffset: 251.2; /* Initially, the circle is empty */
+}
+
+.bike-score .score-ring {
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+
+.bike-score .score-ring[data-score="100"] {
+    stroke-dashoffset: 0;
+}
+
+.bike-score .score-ring[data-score="50"] {
+    stroke-dashoffset: 125.6;
+}
+
+.bike-score .score-ring[data-score="25"] {
+    stroke-dashoffset: 188.4;
+}
+
+/* More dynamic calculation for other scores using JS */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
